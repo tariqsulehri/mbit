@@ -16,9 +16,13 @@
 
   <style>
     :root{
-      --navy: #071129;
-      --gold: #d4af37;
-      --muted: #6b7280;
+      --primary-blue: #3b82f6;
+      --secondary-blue: #2563eb;
+      --dark-blue: #1d4ed8;
+      --light-blue: #60a5fa;
+      --white: #ffffff;
+      --light-gray: #f8fafc;
+      --muted: #64748b;
       --card-bg: #ffffff;
     }
 
@@ -26,30 +30,30 @@
       height:100%;
       margin:0;
       font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: #f6f8fa;
-      color:#222;
+      background: var(--light-gray);
+      color:#1e293b;
     }
 
     /* NAVBAR */
     .navbar {
-      background: linear-gradient(90deg,var(--navy), #041023 120%);
-      box-shadow: 0 6px 18px rgba(3,7,18,0.25);
+      background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue) 120%);
+      box-shadow: 0 6px 18px rgba(37,99,235,0.25);
     }
     .navbar-brand {
-      color: var(--gold) !important;
+      color: var(--white) !important;
       font-weight: 700;
       letter-spacing: 0.6px;
       font-size: 1.15rem;
     }
     .nav-link {
-      color: var(--gold) !important;
+      color: var(--white) !important;
       font-weight:600;
       padding: .6rem 0.8rem;
       text-transform: uppercase;
       font-size: 0.95rem;
     }
     .nav-link:hover, .nav-link:focus {
-      color: #fff !important;
+      color: var(--light-blue) !important;
       text-decoration: none;
       transform: translateY(-2px);
     }
@@ -68,7 +72,7 @@
       object-position: center;
     }
     .carousel-caption {
-      background: linear-gradient(180deg, rgba(7,17,41,0.0) 0%, rgba(7,17,41,0.55) 60%);
+      background: linear-gradient(180deg, rgba(37,99,235,0.0) 0%, rgba(37,99,235,0.55) 60%);
       padding: 1.25rem;
       border-radius: 6px;
       left: 5%;
@@ -93,15 +97,15 @@
       margin: 40px 0;
     }
     .section-title {
-      color: var(--navy);
+      color: var(--primary-blue);
     }
     .section.bg-white {
-      background: #ffffff;
+      background: var(--white);
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(6,10,30,0.08);
+      box-shadow: 0 4px 20px rgba(37,99,235,0.08);
     }
     .section.bg-gradient {
-      background: linear-gradient(135deg, var(--navy) 0%, #0a1a3a 50%, #041023 100%);
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, var(--dark-blue) 100%);
       position: relative;
       overflow: hidden;
     }
@@ -112,7 +116,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(212,175,55,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(212,175,55,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(212,175,55,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(212,175,55,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(212,175,55,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
       opacity: 0.3;
     }
     .section.bg-gradient .container {
@@ -120,8 +124,8 @@
       z-index: 1;
     }
     .section.bg-light-gradient {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
-      border: 1px solid rgba(212,175,55,0.2);
+      background: linear-gradient(135deg, var(--light-gray) 0%, #e2e8f0 50%, #cbd5e1 100%);
+      border: 1px solid rgba(37,99,235,0.2);
       position: relative;
     }
     .section.bg-light-gradient::before {
@@ -131,7 +135,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="lightGrain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(7,17,41,0.05)"/><circle cx="75" cy="75" r="1" fill="rgba(7,17,41,0.05)"/><circle cx="50" cy="10" r="0.5" fill="rgba(7,17,41,0.03)"/><circle cx="10" cy="60" r="0.5" fill="rgba(7,17,41,0.03)"/><circle cx="90" cy="40" r="0.5" fill="rgba(7,17,41,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23lightGrain)"/></svg>');
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="lightGrain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(37,99,235,0.05)"/><circle cx="75" cy="75" r="1" fill="rgba(37,99,235,0.05)"/><circle cx="50" cy="10" r="0.5" fill="rgba(37,99,235,0.03)"/><circle cx="10" cy="60" r="0.5" fill="rgba(37,99,235,0.03)"/><circle cx="90" cy="40" r="0.5" fill="rgba(37,99,235,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23lightGrain)"/></svg>');
       opacity: 0.4;
     }
     .section.bg-light-gradient .container {
@@ -139,7 +143,7 @@
       z-index: 1;
     }
     .section.bg-contact {
-      background: linear-gradient(135deg, var(--navy) 0%, #0a1a3a 50%, #041023 100%);
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, var(--dark-blue) 100%);
       position: relative;
       overflow: hidden;
       padding: 100px 0;
@@ -151,7 +155,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="contactGrain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(212,175,55,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(212,175,55,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(212,175,55,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(212,175,55,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(212,175,55,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23contactGrain)"/></svg>');
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="contactGrain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23contactGrain)"/></svg>');
       opacity: 0.3;
     }
     .section.bg-contact .container {
@@ -164,7 +168,7 @@
       background: rgba(255,255,255,0.1);
       border-radius: 15px;
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(212,175,55,0.2);
+      border: 1px solid rgba(255,255,255,0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       height: 100%;
     }
@@ -176,18 +180,18 @@
     .contact-icon {
       width: 80px;
       height: 80px;
-      background: linear-gradient(135deg, var(--gold), #c79f28);
+      background: linear-gradient(135deg, var(--white), #f1f5f9);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 20px;
       font-size: 32px;
-      color: var(--navy);
-      box-shadow: 0 8px 25px rgba(212,175,55,0.3);
+      color: var(--primary-blue);
+      box-shadow: 0 8px 25px rgba(255,255,255,0.3);
     }
     .contact-title {
-      color: var(--gold);
+      color: var(--white);
       font-weight: 700;
       font-size: 1.2rem;
       margin-bottom: 15px;
@@ -199,12 +203,12 @@
       margin: 0;
     }
     .contact-text a {
-      color: var(--gold);
+      color: var(--white);
       text-decoration: none;
       font-weight: 600;
     }
     .contact-text a:hover {
-      color: #fff;
+      color: var(--light-blue);
       text-decoration: underline;
     }
 
@@ -235,15 +239,15 @@
       width:64px;
       height:64px;
       border-radius:50%;
-      background: linear-gradient(180deg,var(--gold), #c79f28);
-      color: var(--navy);
+      background: linear-gradient(180deg, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
       font-size: 26px;
       margin-bottom: 16px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      box-shadow: 0 6px 18px rgba(37,99,235,0.2);
     }
     .service-title {
       font-weight:700;
-      color: #0b1a2a;
+      color: var(--primary-blue);
       margin-bottom: .5rem;
       font-size: 1.05rem;
     }
@@ -254,27 +258,27 @@
       margin-bottom: 14px;
     }
     .btn-outline-gold {
-      border-color: rgba(212,175,55,0.95);
-      color: var(--navy);
+      border-color: var(--primary-blue);
+      color: var(--primary-blue);
       background: transparent;
       font-weight:600;
       border-radius:8px;
     }
     .btn-outline-gold:hover {
-      background: var(--gold);
-      color: var(--navy);
-      border-color: var(--gold);
+      background: var(--primary-blue);
+      color: var(--white);
+      border-color: var(--primary-blue);
     }
 
     /* Footer */
     footer.site-footer {
-      background: #061423;
+      background: var(--primary-blue);
       color: rgba(255,255,255,0.9);
       padding: 28px 0;
       margin-top: 36px;
       text-align:center;
     }
-    footer a { color: var(--gold); text-decoration:none; font-weight:600; }
+    footer a { color: var(--white); text-decoration:none; font-weight:600; }
 
     /* Responsive tweaks */
     @media (max-width: 767px){
@@ -557,7 +561,7 @@
   <section id="contact" class="section bg-contact">
     <div class="container">
       <div class="text-center mb-5">
-        <h2 class="text-warning mb-4">Contact Us</h2>
+        <h2 class="text-white mb-4">Contact Us</h2>
         <p class="text-light lead">Get in touch with our team for professional medical billing solutions</p>
       </div>
       
