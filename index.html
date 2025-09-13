@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MBIT Services — Medical Billing & RCM</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy: #071129;
+      --gold: #d4af37;
+      --muted: #6b7280;
+      --card-bg: #ffffff;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: #f6f8fa;
+      color:#222;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: linear-gradient(90deg,var(--navy), #041023 120%);
+      box-shadow: 0 6px 18px rgba(3,7,18,0.25);
+    }
+    .navbar-brand {
+      color: var(--gold) !important;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      font-size: 1.15rem;
+    }
+    .nav-link {
+      color: var(--gold) !important;
+      font-weight:600;
+      padding: .6rem 0.8rem;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+    .nav-link:hover, .nav-link:focus {
+      color: #fff !important;
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+    .navbar-toggler {
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    /* CAROUSEL */
+    .carousel .carousel-item {
+      height: 520px;
+    }
+    .carousel .carousel-item img {
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .carousel-caption {
+      background: linear-gradient(180deg, rgba(7,17,41,0.0) 0%, rgba(7,17,41,0.55) 60%);
+      padding: 1.25rem;
+      border-radius: 6px;
+      left: 5%;
+      right: auto;
+      bottom: 30px;
+      text-align: left;
+    }
+    .carousel-caption h5 {
+      color: #fff;
+      font-weight:700;
+      letter-spacing: .2px;
+      font-size: 1.6rem;
+    }
+    .carousel-caption p {
+      color: rgba(255,255,255,0.9);
+      margin: .25rem 0 0;
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 80px 0;
+      margin: 40px 0;
+    }
+    .section-title {
+      color: var(--navy);
+    }
+    .section.bg-white {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(6,10,30,0.08);
+    }
+    .section.bg-gradient {
+      background: linear-gradient(135deg, var(--navy) 0%, #0a1a3a 50%, #041023 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .section.bg-gradient::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(212,175,55,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(212,175,55,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(212,175,55,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(212,175,55,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(212,175,55,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+    .section.bg-gradient .container {
+      position: relative;
+      z-index: 1;
+    }
+    .section.bg-light-gradient {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+      border: 1px solid rgba(212,175,55,0.2);
+      position: relative;
+    }
+    .section.bg-light-gradient::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="lightGrain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(7,17,41,0.05)"/><circle cx="75" cy="75" r="1" fill="rgba(7,17,41,0.05)"/><circle cx="50" cy="10" r="0.5" fill="rgba(7,17,41,0.03)"/><circle cx="10" cy="60" r="0.5" fill="rgba(7,17,41,0.03)"/><circle cx="90" cy="40" r="0.5" fill="rgba(7,17,41,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23lightGrain)"/></svg>');
+      opacity: 0.4;
+    }
+    .section.bg-light-gradient .container {
+      position: relative;
+      z-index: 1;
+    }
+    .section.bg-contact {
+      background: linear-gradient(135deg, var(--navy) 0%, #0a1a3a 50%, #041023 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0;
+    }
+    .section.bg-contact::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="contactGrain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(212,175,55,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(212,175,55,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(212,175,55,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(212,175,55,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(212,175,55,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23contactGrain)"/></svg>');
+      opacity: 0.3;
+    }
+    .section.bg-contact .container {
+      position: relative;
+      z-index: 1;
+    }
+    .contact-item {
+      text-align: center;
+      padding: 30px 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212,175,55,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+    }
+    .contact-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.15);
+    }
+    .contact-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--gold), #c79f28);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 32px;
+      color: var(--navy);
+      box-shadow: 0 8px 25px rgba(212,175,55,0.3);
+    }
+    .contact-title {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+    .contact-text {
+      color: rgba(255,255,255,0.9);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .contact-text a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-text a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* SERVICES / CARDS */
+    .services {
+      padding: 60px 0;
+    }
+    .service-card {
+      border: none;
+      border-radius: 14px;
+      background: var(--card-bg);
+      box-shadow: 0 6px 22px rgba(6,10,30,0.06);
+      transition: transform .22s ease, box-shadow .22s ease;
+      min-height: 100%;
+      overflow: hidden;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 14px 40px rgba(6,10,30,0.12);
+    }
+    .service-card .card-body {
+      padding: 28px;
+    }
+    .service-icon {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      background: linear-gradient(180deg,var(--gold), #c79f28);
+      color: var(--navy);
+      font-size: 26px;
+      margin-bottom: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+    .service-title {
+      font-weight:700;
+      color: #0b1a2a;
+      margin-bottom: .5rem;
+      font-size: 1.05rem;
+    }
+    .service-text {
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.45;
+      margin-bottom: 14px;
+    }
+    .btn-outline-gold {
+      border-color: rgba(212,175,55,0.95);
+      color: var(--navy);
+      background: transparent;
+      font-weight:600;
+      border-radius:8px;
+    }
+    .btn-outline-gold:hover {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+    }
+
+    /* Footer */
+    footer.site-footer {
+      background: #061423;
+      color: rgba(255,255,255,0.9);
+      padding: 28px 0;
+      margin-top: 36px;
+      text-align:center;
+    }
+    footer a { color: var(--gold); text-decoration:none; font-weight:600; }
+
+    /* Responsive tweaks */
+    @media (max-width: 767px){
+      .carousel .carousel-item { height: 320px; }
+      .carousel-caption { left: 12px; right: 12px; bottom: 18px; padding: 12px; }
+    }
+    @media (max-width: 992px){
+      .service-card .card-body { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">MBIT Services</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavBtn" aria-controls="mainNavBtn" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavBtn">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#">ABOUT</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">WHY CHOOSE US</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">OUR SERVICES</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">RoverMD COSTS</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Careers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">CONTACT US</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Carousel -->
+<div id="medicalCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=75" class="d-block w-100" alt="Professional Healthcare Services">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Professional Healthcare Services</h5>
+        <p>Delivering excellence in medical billing and patient care solutions.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=75" class="d-block w-100" alt="Trusted Healthcare Professionals">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Trusted by Healthcare Professionals</h5>
+        <p>End-to-end solutions to support hospitals and clinics.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=75" class="d-block w-100" alt="Advanced Medical Billing">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Advanced Medical Billing</h5>
+        <p>Ensuring accuracy, compliance, and seamless operations.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#medicalCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#medicalCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+<!-- About Us Section -->
+  <section id="about" class="section bg-white">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title mb-4">About Us</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <p class="lead text-muted mb-4">
+              F&A Management is a well-founded and robust Revenue Cycle Management firm serving Individual Healthcare Practices,
+              Large Multi-site Healthcare Groups, Urgent care, Free-standing Emergency Rooms, Ambulatory Surgical Centers,
+              Micro-Hospitals. With years of experience in meticulously handling multi-million dollar accounts for our valued clients
+              and with a 300% annual growth in our client portfolio, we have successfully managed to excel and proved that we are
+              amongst the best in the business.
+            </p>
+            <p class="text-muted">
+              We strongly believe that healthcare entities should be reimbursed fairly for the services that they deliver to the
+              community. Our <strong class="text-primary">MISSION</strong> is to empower and enable them to succeed operationally and financially with a
+              <strong class="text-primary">VISION</strong> to improve the health of every community we serve.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us Section -->
+  <section id="why" class="section bg-light-gradient text-center">
+    <div class="container">
+      <h2 class="text-primary mb-4">Why F&A Management</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <p class="text-muted mb-4">
+            With our unique hybrid operations structure, we provide 24 hours' operational support. Our system allows for a workflow
+            that ensures every claim receives adequate reimbursement and reporting while providing matchless patient services.
+          </p>
+          <p class="text-muted mb-4">
+            F&A Management is committed to protecting and securing critical healthcare data in compliance with HIPAA Standards. Our
+            IT infrastructure comprises of encrypted IPSEC VPN connection and advanced FIREWALL implementation, ensuring that your
+            valuable billing and private health data transfer is secure and protected from intrusions.
+          </p>
+          <p class="text-muted mb-4">
+            F&A Management is far from any other revenue cycle management and medical billing company. With roots deep into the
+            healthcare industry and experience in managing profitable healthcare ventures while giving back to the community, we
+            integrate the best possible framework to ensure matchless collections and hassle-free operations for our valued clients.
+          </p>
+          <p class="text-primary lead"><strong>For best results, you want F&A Management by your side.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES: 12 cards (3 columns large, 2 columns medium, 1 column small) -->
+  <section class="services">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Our Services</h2>
+        <p class="text-muted">Comprehensive revenue cycle management and healthcare support — designed to reduce denials, speed up collections, and improve patient satisfaction.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- 1 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card service-card h-100">
+            <div class="card-body text-center">
+              <div class="service-icon mb-2"><i class="fa-solid fa-id-card-clip"></i></div>
+              <h5 class="service-title">Credentialing</h5>
+              <p class="service-text">Complex and delicate process handled by experienced specialists to ensure providers are credentialed quickly and correctly.</p>
+              <a href="#" class="btn btn-outline-gold">Show More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card service-card h-100">
+            <div class="card-body text-center">
+              <div class="service-icon mb-2"><i class="fa-solid fa-code"></i></div>
+              <h5 class="service-title">Coding</h5>
+              <p class="service-text">Certified Professional Coders (CPC) apply up-to-date coding standards to maximize compliance and revenue.</p>
+              <a href="#" class="btn btn-outline-gold">Show More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card service-card h-100">
+            <div class="card-body text-center">
+              <div class="service-icon mb-2"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+              <h5 class="service-title">Charge Entry</h5>
+              <p class="service-text">Accurate charge entry is critical — our teams ensure charges are recorded meticulously to avoid rework.</p>
+              <a href="#" class="btn btn-outline-gold">Show More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card service-card h-100">
+            <div class="card-body text-center">
+              <div class="service-icon mb-2"><i class="fa-solid fa-microscope"></i></div>
+              <h5 class="service-title">Claims Scrubbing</h5>
+              <p class="service-text">A dedicated review to detect demographic, coding, and submission errors before claims reach payors.</p>
+              <a href="#" class="btn btn-outline-gold">Show More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card service-card h-100">
+            <div class="card-body text-center">
+              <div class="service-icon mb-2"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+              <h5 class="service-title">AR Follow Up</h5>
+              <p class="service-text">Experienced AR specialists rigorously follow up on submitted claims to ensure timely adjudication and receipts.</p>
+              <a href="#" class="btn btn-outline-gold">Show More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card service-card h-100">
+            <div class="card-body text-center">
+              <div class="service-icon mb-2"><i class="fa-solid fa-xmark"></i></div>
+              <h5 class="service-title">Denials & Appeals</h5>
+              <p class="service-text">Exhaustive, systematic management of underpaid or denied claims to pursue rightful reimbursements.</p>
+              <a href="#" class="btn btn-outline-gold">Show More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card service-card h-100">
+            <div class="card-body text-center">
+              <div class="service-icon mb-2"><i class="fa-solid fa-receipt"></i></div>
+              <h5 class="service-title">Payment Posting</h5>
+              <p class="service-text">Daily review and posting of ERAs, EFTs and paper checks to maintain transparent cashflow reporting.</p>
+              <a href="#" class="btn btn-outline-gold">Show More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card service-card h-100">
+            <div class="card-body text-center">
+              <div class="service-icon mb-2"><i class="fa-solid fa-user-check"></i></div>
+              <h5 class="service-title">Patient Services</h5>
+              <p class="service-text">Designated patient advocates and customer-service reps maintain communication after care delivery.</p>
+              <a href="#" class="btn btn-outline-gold">Show More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card service-card h-100">
+            <div class="card-body text-center">
+              <div class="service-icon mb-2"><i class="fa-solid fa-chart-line"></i></div>
+              <h5 class="service-title">Reporting</h5>
+              <p class="service-text">Analytics and reporting dashboards deliver real-time status and trend analysis for your practice.</p>
+              <a href="#" class="btn btn-outline-gold">Show More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card service-card h-100">
+            <div class="card-body text-center">
+              <div class="service-icon mb-2"><i class="fa-solid fa-hospital"></i></div>
+              <h5 class="service-title">Free-Standing ER</h5>
+              <p class="service-text">Tailored revenue & operations solutions for Free-Standing Emergency Rooms and micro-hospitals.</p>
+              <a href="#" class="btn btn-outline-gold">Show More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card service-card h-100">
+            <div class="card-body text-center">
+              <div class="service-icon mb-2"><i class="fa-solid fa-network-wired"></i></div>
+              <h5 class="service-title">IT Services</h5>
+              <p class="service-text">Secure transmission, scalable facility infrastructure and dependable IT support for healthcare systems.</p>
+              <a href="#" class="btn btn-outline-gold">Show More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card service-card h-100">
+            <div class="card-body text-center">
+              <div class="service-icon mb-2"><i class="fa-solid fa-gem"></i></div>
+              <h5 class="service-title">Special Services</h5>
+              <p class="service-text">Additional offerings (Marketing, HR, Payroll) and custom services to fit your organization's needs.</p>
+              <a href="#" class="btn btn-outline-gold">Show More</a>
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- /row -->
+    </div><!-- /container -->
+  </section>
+
+  <!-- CONTACT US SECTION -->
+  <section id="contact" class="section bg-contact">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="text-warning mb-4">Contact Us</h2>
+        <p class="text-light lead">Get in touch with our team for professional medical billing solutions</p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h4 class="contact-title">Email Us</h4>
+            <p class="contact-text">
+              <a href="mailto:info@mbitservices.com">info@mbitservices.com</a><br>
+              <a href="mailto:support@mbitservices.com">support@mbitservices.com</a>
+            </p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <h4 class="contact-title">Call Us</h4>
+            <p class="contact-text">
+              <a href="tel:+15551234567">+1 (555) 123-4567</a><br>
+              <a href="tel:+15551234568">+1 (555) 123-4568</a>
+            </p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h4 class="contact-title">Visit Us</h4>
+            <p class="contact-text">
+              123 Medical Plaza Drive<br>
+              Suite 456, Healthcare District<br>
+              New York, NY 10001
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-5">
+        <p class="text-light">Available 24/7 for emergency support | HIPAA Compliant</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Optional: increase carousel interval (ms)
+    const carouselElement = document.querySelector('#mainCarousel');
+    if (carouselElement) {
+      const carousel = bootstrap.Carousel.getOrCreateInstance(carouselElement, { interval: 5000, ride: 'carousel' });
+    }
+  </script>
+</body>
+</html>
